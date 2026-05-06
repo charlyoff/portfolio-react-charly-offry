@@ -34,3 +34,5 @@ Le tableau `messages` vide signifie qu'aucune erreur HTML n'a été remontée pa
 - Présence des balises `meta charset`, `viewport` et `description`.
 - Utilisation de textes alternatifs pour les images importantes.
 - Structure responsive prévue pour ordinateur, tablette et mobile.
+- Découpage en fichiers de composants React (`components`) et de pages (`pages`).
+- Utilisation de Bootstrap via le paquet npm `bootstrap`.

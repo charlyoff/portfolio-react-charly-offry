@@ -46,6 +46,7 @@ npm run preview -- --host 127.0.0.1 --port 3000
 
 - React
 - Vite
+- Bootstrap
 - HTML5
 - CSS3
 
@@ -57,6 +58,7 @@ npm run preview -- --host 127.0.0.1 --port 3000
 - Mise en place d'une navigation entre les pages principales du portfolio.
 - Adaptation responsive pour desktop, tablette et mobile.
 - Respect des maquettes fournies pour les pages Accueil, Services, Portfolio, Contact et Mentions légales.
+- Découpage du code en composants React et pages dédiées.
 - Ajout de règles de base pour le référencement : langue du document, titre de page, description, balises sémantiques et textes alternatifs sur les images.
 - Documentation du projet avec les prérequis, l'installation et les commandes de lancement.
 

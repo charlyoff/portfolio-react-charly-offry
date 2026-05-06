@@ -23,6 +23,20 @@ body {
   line-height: 1.5;
 }
 
+#root,
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1 0 auto;
+}
+
 a {
   color: inherit;
 }
@@ -130,6 +144,13 @@ a {
   padding: 8px 16px;
   text-decoration: none;
   font: inherit;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(13, 110, 253, 0.25);
 }
 
 .btn-primary {
@@ -241,6 +262,14 @@ a {
   border-radius: 4px;
   background: white;
   overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.service-card:hover,
+.project-card:hover {
+  border-color: var(--blue);
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
 }
 
 .service-card {
@@ -252,6 +281,12 @@ a {
 .service-card .icon {
   color: var(--blue);
   margin-bottom: 36px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.service-card:hover .icon {
+  color: #0a58ca;
+  transform: scale(1.12);
 }
 
 .service-card h2,
@@ -273,6 +308,12 @@ a {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.project-card:hover img {
+  filter: brightness(0.9);
+  transform: scale(1.04);
 }
 
 .project-body {
@@ -346,7 +387,7 @@ a {
 }
 
 .legal-page {
-  min-height: 604px;
+  min-height: calc(100vh - 56px - 252px);
 }
 
 .accordion {
@@ -387,6 +428,7 @@ a {
 }
 
 .site-footer {
+  flex-shrink: 0;
   background: var(--dark);
   color: white;
   padding-block: 44px;
@@ -424,6 +466,12 @@ a {
 
 .social-links a {
   color: #59616a;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: white;
+  transform: translateY(-2px);
 }
 
 .social-links .icon {
