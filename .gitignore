@@ -2,6 +2,8 @@ node_modules/
 dist/
 /images/
 /maquettes/
+/portfolio-john-doe-rendu.zip
+/rendu_portfolio_john_doe/
 .env
 .DS_Store
 Thumbs.db
