@@ -23,6 +23,9 @@ npm start
 
 Le site est ensuite disponible sur l'adresse indiquée par Vite dans le terminal.
 
+Sous Windows, vous pouvez aussi double-cliquer sur `lancer_portfolio.bat`.
+Le script installe les dépendances si `node_modules` n'existe pas, puis lance le serveur Vite.
+
 ## Build de production
 
 ```bash
@@ -69,3 +72,8 @@ Le fichier HTML généré a été contrôlé avec le validateur W3C Nu HTML Chec
 Résultat : aucune erreur et aucun message après correction.
 
 Un résumé est disponible dans `docs/validation.md`.
+
+## Version statique prête à ouvrir
+
+Une version générée du site peut être ouverte directement avec `index.html` dans le dossier `site_pret_a_ouvrir`.
+Cette version sert uniquement à vérifier rapidement le rendu dans le navigateur.

@@ -4,6 +4,8 @@ dist/
 /maquettes/
 /portfolio-john-doe-rendu.zip
 /rendu_portfolio_john_doe/
+/site_pret_a_ouvrir/
+/site_pret_a_ouvrir.zip
 .env
 .DS_Store
 Thumbs.db

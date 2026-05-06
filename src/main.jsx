@@ -18,6 +18,13 @@ const navItems = [
   { label: "Mentions légales", path: "/mentions-legales" }
 ];
 
+function getCurrentPath() {
+  const hashPath = window.location.hash.replace(/^#/, "");
+  if (pageTitles[hashPath]) return hashPath;
+  if (pageTitles[window.location.pathname]) return window.location.pathname;
+  return "/";
+}
+
 const projects = [
   {
     title: "Fresh Food",
@@ -87,14 +94,19 @@ const services = [
 ];
 
 function App() {
-  const [path, setPath] = useState(window.location.pathname);
+  const [path, setPath] = useState(getCurrentPath);
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const onPopState = () => setPath(window.location.pathname);
+    const onPopState = () => setPath(getCurrentPath());
+    const onHashChange = () => setPath(getCurrentPath());
     window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("hashchange", onHashChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -103,7 +115,7 @@ function App() {
   }, [path]);
 
   const navigate = (nextPath) => {
-    window.history.pushState({}, "", nextPath);
+    window.location.hash = nextPath;
     setPath(nextPath);
     setMenuOpen(false);
   };
@@ -134,7 +146,7 @@ function App() {
 function Header({ path, menuOpen, onToggleMenu, onNavigate }) {
   return (
     <header className="site-header">
-      <a className="brand" href="/" onClick={(event) => handleNav(event, "/", onNavigate)}>
+      <a className="brand" href="#/" onClick={(event) => handleNav(event, "/", onNavigate)}>
         John Doe
       </a>
       <button
@@ -153,7 +165,7 @@ function Header({ path, menuOpen, onToggleMenu, onNavigate }) {
           <a
             key={item.path}
             className={path === item.path ? "active" : ""}
-            href={item.path}
+            href={`#${item.path}`}
             onClick={(event) => handleNav(event, item.path, onNavigate)}
           >
             {item.label}
@@ -415,7 +427,7 @@ function Footer({ onNavigate }) {
         <section>
           <h2>Liens utiles</h2>
           {navItems.map((item) => (
-            <a key={item.path} href={item.path} onClick={(event) => handleNav(event, item.path, onNavigate)}>
+            <a key={item.path} href={`#${item.path}`} onClick={(event) => handleNav(event, item.path, onNavigate)}>
               {item.path === "/" ? "Accueil" : item.label}
             </a>
           ))}
@@ -423,7 +435,7 @@ function Footer({ onNavigate }) {
         <section>
           <h2>Mes dernières réalisations</h2>
           {projects.map((project) => (
-            <a key={project.title} href="/portfolio" onClick={(event) => handleNav(event, "/portfolio", onNavigate)}>
+            <a key={project.title} href="#/portfolio" onClick={(event) => handleNav(event, "/portfolio", onNavigate)}>
               {project.title}
             </a>
           ))}
